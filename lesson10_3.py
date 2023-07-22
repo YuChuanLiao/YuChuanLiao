@@ -34,7 +34,7 @@ def save_csv(data):
         writer = csv.DictWriter(file,fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(data)
-        
+
 def main():
     # 下載Json檔
     weather = download_weather()
@@ -45,6 +45,8 @@ def main():
         print("應用程式下載失敗")
         return
 
+    csv_data = parse_json(weather)
+    save_csv(csv_data)
 
 if __name__ == "__main__":
     main()
