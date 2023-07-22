@@ -3,9 +3,11 @@ import requests
 url = 'https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=rdec-key-123-45678-011121314&format=JSON'
 
 response = requests.get(url)
+
 if response.status_code == 200:
     print("下載成功")
     weather = response.json()
+    
 location = weather['cwbopendata']['dataset']['location']
 weather_list = []
 for item in location:
@@ -18,6 +20,7 @@ for item in location:
     city_item['感覺'] = item['weatherElement'][3]['time'][0]['parameter']['parameterName']
     weather_list.append(city_item)
 weather_list
+
 import csv
 with open('目前天氣.csv',mode='w',encoding='utf-8',newline='') as file:
     fieldnames = ['城市','起始時間','結束時間','最高溫度','最低溫度','感覺']
