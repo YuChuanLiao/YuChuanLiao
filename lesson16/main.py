@@ -21,4 +21,3 @@ stock_name_id = stockNames.index + "_" + stockNames.values
 options = st.sidebar.multiselect('請選擇',
                        stockNames.values,
                        placeholder='股票:')
-print(options)
